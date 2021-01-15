@@ -1,23 +1,17 @@
 import Phaser from 'phaser';
+import Player from '../game/Player';
 
 export default class MainScene extends Phaser.Scene {
 
-    body: Array<Phaser.GameObjects.Rectangle>;
-
+    player: Player | null;
     constructor() {
         super('main-scene');
-        this.body = [];
+        this.player = null;
     }
 
     create() {
-        this.body.push(this.add.rectangle(16, 0, 16, 16, 0xff0000).setOrigin(0));
-        this.body.push(this.add.rectangle(0, 0, 16, 16, 0x0000ff).setOrigin(0));
+        this.player = new Player(this);
     }
 
-    update() {
-        this.body[0].x += 1;
-        this.body[1].x += 1;
-    }
-
-
+    update() {}
 }
