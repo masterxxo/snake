@@ -39,6 +39,7 @@ export default class Player {
             0xff0000
         ).setOrigin(0);
 
+        this.body.add(this.scene.add.rectangle(-this.tileSize, -this.tileSize, this.tileSize, this.tileSize, 0xff0000).setOrigin(0));
         this.scene.input.keyboard.on('keydown', (event) => {
             this.keyboardController(event);
         });
