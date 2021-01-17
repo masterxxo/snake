@@ -8,6 +8,9 @@ type Position = {
 export default class Player {
     /** @type {Phaser.Scene} */
     scene: Phaser.Scene;
+
+    private readonly PLAYER_SPEED: number = 100;
+
     private lastMoveTime: number;
     private moveInterval: number = 100;
     private tileSize: number = 16;
@@ -59,7 +62,7 @@ export default class Player {
             return;
         }
 
-        if(time >= (this.lastMoveTime + this.moveInterval)) {
+        if(time >= (this.lastMoveTime + this.PLAYER_SPEED)) {
             this.lastMoveTime = time;
             this.move();
         }

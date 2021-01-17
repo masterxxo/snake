@@ -3,10 +3,9 @@ import Player from '../game/Player';
 
 export default class MainScene extends Phaser.Scene {
 
-    player: Player | Object;
+    player!: Player;
     constructor() {
         super('main-scene');
-        this.player = {};
     }
 
     create() {
@@ -14,6 +13,6 @@ export default class MainScene extends Phaser.Scene {
     }
 
     update(time) {
-        this.player.update(time)
+        this.player.update(time);
     }
 }
