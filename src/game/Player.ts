@@ -14,7 +14,7 @@ export default class Player {
     /** @type {Phaser.Math.Vector2} */
     private direction: Phaser.Math.Vector2;
     private body: Phaser.Physics.Arcade.Group;
-    private snakeHead: Phaser.GameObjects.Rectangle;
+    private snakeHead!: Phaser.GameObjects.Rectangle;
     private stop: Boolean;
 
     private apple: Apple | null;
@@ -48,10 +48,10 @@ export default class Player {
 
         this.scene.physics.add.existing(this.snakeHead);
         this.scene.physics.add.collider(this.snakeHead, this.body);
-        this.scene.physics.add.overlap(this.snakeHead, this.body, this.gameOver, null, this);
+        this.scene.physics.add.overlap(this.snakeHead, this.body, this.gameOver, undefined, this);
 
         this.scene.physics.add.collider(this.snakeHead, this.apple.object);
-        this.scene.physics.add.overlap(this.snakeHead, this.apple.object, this.collectApple, null, this);
+        this.scene.physics.add.overlap(this.snakeHead, this.apple.object, this.collectApple, undefined, this);
     }
 
     update(time) {
@@ -68,8 +68,8 @@ export default class Player {
     private move() {
         let x = this.snakeHead.x + (this.direction.x * this.tileSize);
         let y = this.snakeHead.y + (this.direction.y * this.tileSize);
-
-        const bodyChildren = this.body.getChildren();
+        
+        const bodyChildren = this.body.getChildren() as Array<Phaser.GameObjects.Rectangle>;
 
         for(let i = this.body.getLength() - 1; i > 0; i --) {
 
@@ -90,7 +90,7 @@ export default class Player {
         this.snakeHead.y = headPosition.y;
     }
 
-    private setBodyPosition(child: Phaser.GameObjects.GameObject, position: Position) {
+    private setBodyPosition(child: Phaser.GameObjects.Rectangle, position: Position) {
         child.x = position.x;
         child.y = position.y;
     }
