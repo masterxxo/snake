@@ -158,7 +158,6 @@ export default class Player {
     }
 
     private gameOver() {
-        console.log('is there anything');
         this.scene.scene.restart();
     }
 }
